@@ -3,6 +3,16 @@
     "description": "Standalone CLI client for ErrorLoop",
     "type": "library",
     "license": "MIT",
+    "homepage": "https://github.com/secretforceagent/errorloop-cli",
+    "authors": [
+        {
+            "name": "Secret Force Agent"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/secretforceagent/errorloop-cli/issues",
+        "source": "https://github.com/secretforceagent/errorloop-cli"
+    },
     "require": {
         "php": "^8.3",
         "guzzlehttp/guzzle": "^7.9",
