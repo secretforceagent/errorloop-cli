@@ -47,6 +47,18 @@ The agent token is configured on the ErrorLoop server, not per-project.
 
 ## Usage
 
+Create a project (returns the API key for the Laravel SDK):
+
+```bash
+errorloop create-project babyprocare
+```
+
+List projects:
+
+```bash
+errorloop projects
+```
+
 List open issues:
 
 ```bash

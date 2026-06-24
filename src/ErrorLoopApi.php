@@ -82,6 +82,17 @@ class ErrorLoopApi
     }
 
     /**
+     * @param  array<string, mixed>  $data
+     * @return array<string, mixed>
+     *
+     * @throws GuzzleException
+     */
+    public function createProject(array $data): array
+    {
+        return $this->post('projects', $data);
+    }
+
+    /**
      * @return array<string, mixed>
      *
      * @throws GuzzleException
@@ -89,6 +100,16 @@ class ErrorLoopApi
     public function getIssueExamples(int $id): array
     {
         return $this->get("issues/{$id}/examples");
+    }
+
+    /**
+     * @return array<string, mixed>
+     *
+     * @throws GuzzleException
+     */
+    public function getProjects(): array
+    {
+        return $this->get('projects');
     }
 
     /**
