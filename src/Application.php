@@ -3,6 +3,7 @@
 namespace ErrorLoop\Cli;
 
 use ErrorLoop\Cli\Commands\ClaimCommand;
+use ErrorLoop\Cli\Commands\ConfigCommand;
 use ErrorLoop\Cli\Commands\DeployCommand;
 use ErrorLoop\Cli\Commands\FixAttemptedCommand;
 use ErrorLoop\Cli\Commands\IssueCommand;
@@ -14,8 +15,10 @@ class Application
 {
     public static function run(): int
     {
-        $endpoint = getenv('ERRORLOOP_ENDPOINT') ?: 'https://errorloop.example.com';
-        $agentToken = getenv('ERRORLOOP_AGENT_TOKEN') ?: '';
+        $config = new Config;
+
+        $endpoint = getenv('ERRORLOOP_ENDPOINT') ?: $config->getEndpoint();
+        $agentToken = getenv('ERRORLOOP_AGENT_TOKEN') ?: $config->getAgentToken();
 
         $api = new ErrorLoopApi($endpoint, $agentToken);
 
@@ -26,6 +29,7 @@ class Application
         $app->addCommand(new FixAttemptedCommand($api));
         $app->addCommand(new DeployCommand($api));
         $app->addCommand(new VerifyCommand($api));
+        $app->addCommand(new ConfigCommand($config));
         $app->setDefaultCommand('list');
 
         return $app->run();
