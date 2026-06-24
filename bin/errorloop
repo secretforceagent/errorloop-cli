@@ -1,0 +1,27 @@
+#!/usr/bin/env php
+<?php
+
+$autoloadPaths = [
+    __DIR__.'/../../../vendor/autoload.php', // running from package source
+    __DIR__.'/../../../autoload.php',        // installed as composer dependency
+    __DIR__.'/../vendor/autoload.php',       // standalone package
+];
+
+$autoload = null;
+foreach ($autoloadPaths as $path) {
+    if (file_exists($path)) {
+        $autoload = $path;
+        break;
+    }
+}
+
+if ($autoload === null) {
+    fwrite(STDERR, "Composer autoload not found.\n");
+    exit(1);
+}
+
+require $autoload;
+
+use ErrorLoop\Cli\Application;
+
+exit(Application::run());

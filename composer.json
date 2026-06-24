@@ -1,0 +1,35 @@
+{
+    "name": "errorloop/cli",
+    "description": "Standalone CLI client for ErrorLoop",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^8.3",
+        "guzzlehttp/guzzle": "^7.9",
+        "symfony/console": "^7.0|^8.0"
+    },
+    "require-dev": {
+        "pestphp/pest": "^4.0",
+        "mockery/mockery": "^1.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "ErrorLoop\\Cli\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ErrorLoop\\Cli\\Tests\\": "tests/"
+        }
+    },
+    "bin": [
+        "bin/errorloop"
+    ],
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
